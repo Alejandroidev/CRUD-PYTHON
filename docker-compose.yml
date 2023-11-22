@@ -1,0 +1,20 @@
+version: "sqlV1.0"
+
+services:
+  db_postgres:
+    image: postgres:14.6-alpine
+    container_name: SQLPOSGRES
+    hostname: db-sql
+    restart: "no"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      
+volumes:
+  postgres_data:
+    external: true
+
